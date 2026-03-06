@@ -27,39 +27,49 @@ body {
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 10000;
+  isolation: isolate;
   /* position: fixed;
   z-index: 100000; */
 }
 
-.logo {
+.site-header .logo {
   margin-bottom: 10px;
   margin-left: 20px;
   padding-top:15px;
 }
 
-.logo img {
+.site-header .logo img {
   width: 150px;
+  height: auto;
+  display: block;
 }
 
-.logo1 {
+.site-header .logo1 {
   margin-bottom: 20px;
   margin-left: 40px;
   padding: 10px;
 }
 
-.logo1 img {
+.site-header .logo1 img {
   width: 140px;
+  height: auto;
+  display: block;
 }
 
 .nav-container {
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 .nav-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 10002;
 }
 
 
@@ -72,10 +82,15 @@ body {
   justify-content: flex-start;
   gap: 15px;
   list-style: none;
+  position: relative;
+  z-index: 10001;
 }
 
 .nav-main-menu .logo {
   margin-right: 20px;
+  position: relative;
+  z-index: 10003;
+  background: #fff;
 }
 
 .nav-main-menu li {
@@ -100,7 +115,7 @@ body {
 .has-mega .mega-menu {
   position: absolute;
   left: 0;
-  top: 114%;
+  top: calc(100% + 8px);
   width: 180vw;
   background: #fff;
   padding: 35px 690px;
@@ -108,7 +123,7 @@ body {
   grid-template-columns: auto auto auto auto;
   justify-content: start;
   gap: 50px;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .has-mega:hover .mega-menu {
@@ -196,8 +211,17 @@ body {
   color: #d22027;
 }
 
+.mega-images {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
 .mega-images img {
   width: 180px;
+  height: 210px;
+  object-fit: cover;
+  display: block;
   border-radius: 5px;
 }
 
@@ -213,7 +237,7 @@ body {
   cursor: pointer;
 }
 
-.logo1 {
+.site-header .logo1 {
   display: none;
 }
 
@@ -222,6 +246,15 @@ body {
 }
 
 @media (min-width: 1025px) {
+  .has-mega::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 8px;
+  }
+
   #unique:hover+#col3 {
     display: block;
   }
@@ -233,7 +266,7 @@ body {
     padding: 15px 30px 45px 10px ;
   }
 
-  .logo {
+  .site-header .logo {
     display: none;
   }
 
@@ -241,7 +274,7 @@ body {
     display: none;
   }
 
-  .logo1 {
+  .site-header .logo1 {
     display: inline-flex;
     padding: 0;
     margin-left: 20px;
@@ -317,12 +350,12 @@ body {
     padding: 0 20px;
   }
 
-  .logo {
+  .site-header .logo {
     margin-left: 10px;
     margin-bottom: 10px;
   }
 
-  .logo img {
+  .site-header .logo img {
     width: 130px;
   }
 
@@ -375,6 +408,8 @@ body {
   /* Images smaller for tablet */
   .mega-images img {
     width: 140px;
+    height: 160px;
+    object-fit: cover;
   }
 
   /* Hamburger should NOT appear in tablet */
@@ -535,7 +570,7 @@ hr {
 }
 
 /* LOGO + MAP */
-.logo {
+.logo-map .logo {
   width: 140px;
   margin-bottom: 20px;
 }

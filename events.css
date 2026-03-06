@@ -168,12 +168,12 @@ input[type="radio"]{
 
 /* Grid */
 .events-grid{
-  max-width:1240px;
+  max-width:1300px;
   margin:auto;
   padding:20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(var(--event-card-width),var(--event-card-width)));
-  gap:28px;
+  gap:30px;
   grid-auto-rows:1fr;
   justify-content:center;
   align-items:stretch;
@@ -202,10 +202,10 @@ input[type="radio"]{
   width:100%;
   height:var(--event-card-image-height);
   min-height:var(--event-card-image-height);
-  object-fit:contain;
+  object-fit:cover;
   object-position:center;
   background:#fff;
-  padding:10px 12px;
+  padding:0;
   display:block;
   flex-shrink:0;
   transition:transform .9s ease, filter .5s ease;
@@ -216,7 +216,7 @@ input[type="radio"]{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  gap:6px;
+  gap:12px;
   height:calc(100% - var(--event-card-image-height));
   background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,1) 100%);
 }
@@ -227,17 +227,14 @@ input[type="radio"]{
   line-height:1.28;
   margin:0;
   color:#a11717;
-  min-height:132px;
-  max-height:132px;
   overflow:hidden;
-  display:-webkit-box;
-  -webkit-line-clamp:5;
-  -webkit-box-orient:vertical;
-  text-align:left;
+  display:block;
+  text-align:center;
+  flex:1;
 }
 
 .events-grid .event-date{
-  display:flex;
+  display:none;
   align-items:center;
   gap:8px;
   font-size:1rem;
@@ -258,11 +255,11 @@ input[type="radio"]{
 }
 
 .events-grid .div-box{
-  margin-top:10px;
+  margin-top:auto;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  min-height:44px;
+  min-height:24px;
   gap:12px;
   width:100%;
 }
@@ -279,6 +276,7 @@ input[type="radio"]{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  margin-inline:auto;
   gap:8px;
   padding:10px 18px;
   border-radius:999px;
@@ -378,8 +376,8 @@ input[type="radio"]{
   .events-grid .event-card img{
     height:230px;
     min-height:230px;
-    object-fit:contain;
-    padding:8px 10px;
+    object-fit:cover;
+    padding:0;
   }
 
   .events-grid .event-card{
@@ -394,9 +392,7 @@ input[type="radio"]{
 
   .events-grid .event-title{
     font-size:1.2rem;
-    min-height:108px;
-    max-height:108px;
-    -webkit-line-clamp:5;
+    flex:1;
   }
 
   .events-grid .learn-more{
@@ -489,7 +485,7 @@ input[type="radio"]{
   color:#777;
   font-size:15px;
   line-height:1.7;
-  max-width:520px;
+  
 }
 
 /* RIGHT */
@@ -586,11 +582,13 @@ input[type="radio"]{
 
 .event-content h2{
   margin:40px 0 20px;
-  font-size:22px;
+  font-size:32px;
+  color: red;
 }
 .event-content h3{
   margin:40px 0 20px;
-  font-size:52px;
+  font-size:34px;
+  color: red;
 }
 
 .signature{
@@ -664,18 +662,24 @@ input[type="radio"]{
 }
 
 .course-main h1{
-  font-size:32px;
+  font-size:36px;
   line-height:1.4;
-  color:#96332c;
+  color:#d1291d;
   margin-bottom:30px;
   font-weight:700;
+}
+.course-main h3{
+  color: red;
+  padding-bottom: 20px;
+  font-size: 24px;
 }
 
 .course-main p{
   max-width:700px;
   margin:0 auto 20px;
   font-size:18px;
-  line-height:1.8;
+  text-align: justify;
+  line-height:1.7;
   color:#cccccc;
 }
 
@@ -1022,4 +1026,38 @@ input[type="radio"]{
 .event-list li {
   margin-bottom: 8px;
   line-height: 1.6;
+}
+
+
+
+.running-section{
+  width:100%;
+  overflow:hidden;
+  background:#181414;
+  color:rgb(255, 0, 0);
+  padding:12px 0;
+  position:relative;
+  
+}
+
+.running-text{
+  padding: 20px;
+  display:inline-block;
+  white-space:nowrap;
+  padding-left:100%;
+  animation: runText 16s linear infinite;
+  font-size:40px;
+  font-weight: 700;
+  font-weight:bold;
+  font-family: var(--primary-font);
+  letter-spacing: 0.1cap;
+}
+
+@keyframes runText{
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
 }
