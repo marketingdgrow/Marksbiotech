@@ -1,0 +1,400 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body{
+  background: radial-gradient(circle at top, #333, #000);
+  color: #fff;
+}
+
+/* HERO */
+
+.top-banner-heritage {
+  width: 100%;
+  height: 80vh;
+  background-image:linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(10, 2, 2, 0.2) 100%
+    ),url("./assets/imgs/Rectangle 246.png") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: center;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.top-banner-heritage h1 {
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.hero-heritage {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding:80px 5%;
+  background-color: #000;
+  height: 100vh;
+}
+
+.hero-heritage-img img {
+  max-width: 480px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.hero-heritage-text {
+  padding-left: 30px;
+}
+
+.hero-heritage-text h3 {
+  color: #fff;
+  border-bottom: 2px solid red;
+  margin-bottom: 20px;
+  font-size: 60px;
+  font-weight:700;
+}
+.hero-heritage-text h5 {
+  color: red ;
+  font-size: 50px;
+  font-weight: 800;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.hero-heritage-text p {
+  font-size: 27px;
+  padding-bottom: 30px;
+}
+
+.hero-heritage-text p b {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.hero-heritage-text ul {
+  margin-top: 24px;
+  padding-left: 20px;
+  line-height: 1.9;
+  font-size: 24px;
+}
+
+
+
+
+
+/* =====================
+   SECTION
+===================== */
+
+.timeline-section {
+  padding: 100px 5%;
+  background-image:linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(10, 2, 2, 0.2) 100%
+    ),url("./assets/imgs/bg-heritage-1.jpeg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: center;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+/* CENTER LINE */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #ffffff;
+  transform: translateX(-50%);
+}
+
+/* =====================
+   ITEM ROW
+===================== */
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 180px;
+}
+
+/* LEFT SIDE ROW */
+.timeline-item.left {
+  justify-content: flex-end;
+  padding-right: 50%;
+}
+
+/* RIGHT SIDE ROW */
+.timeline-item.right {
+  justify-content: flex-start;
+  padding-left: 50%;
+}
+
+/* =====================
+   CENTER DOT
+===================== */
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: red;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  animation: pulse 1.5s infinite;
+}
+
+/* =====================
+   CONNECTOR LINE (ARROW FEEL)
+===================== */
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: #ffffff;
+}
+
+.timeline-item.right::after {
+  left: 50%;
+}
+
+.timeline-item.left::after {
+right: 50%;
+}
+
+/* =====================
+   CIRCLE IMAGE
+===================== */
+
+.circle {
+  
+  background: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+  flex-shrink: 0;
+  animation: zoomIn 0.6s ease forwards;
+}
+
+.circle img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+/* =====================
+   CONTENT
+===================== */
+
+.content {
+  text-align: center;
+  min-width: 280px;
+}
+
+.content h4 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.content span {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+
+@keyframes zoomIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,0,0,.6); }
+  70% { box-shadow: 0 0 0 12px rgba(255,0,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+}
+
+/* STAGGER */
+.timeline-item:nth-child(1){ animation-delay:.2s }
+.timeline-item:nth-child(2){ animation-delay:.4s }
+.timeline-item:nth-child(3){ animation-delay:.6s }
+.timeline-item:nth-child(4){ animation-delay:.8s }
+.timeline-item:nth-child(5){ animation-delay:1s }
+
+
+@media (max-width: 1024px) {
+
+  /* HERO */
+  .hero-heritage {
+    flex-direction: column;
+    height: auto;
+    gap: 40px;
+    padding: 60px 5%;
+    text-align: center;
+  }
+
+  .hero-heritage-text {
+    padding-left: 0;
+  }
+
+  .hero-heritage-text h3 {
+    font-size: 44px;
+  }
+
+  .hero-heritage-text h5 {
+    font-size: 36px;
+  }
+
+  .hero-heritage-text p {
+    font-size: 22px;
+  }
+
+  .hero-heritage-img img {
+    max-width: 360px;
+  }
+
+  /* TIMELINE SCALE */
+  .timeline {
+    max-width: 90%;
+  }
+
+  .circle {
+    width: 130px;
+    height: 130px;
+  }
+
+  .content {
+    min-width: 220px;
+  }
+
+  .content h4 {
+    font-size: 20px;
+  }
+
+  .content span {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* HERO BANNER */
+  .top-banner-heritage {
+    height: 50vh;
+  }
+
+  .top-banner-heritage h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  /* HERO SECTION */
+  .hero-heritage {
+    flex-direction: column;
+    padding: 50px 5%;
+    text-align: center;
+    height: auto;
+  }
+
+  .hero-heritage-text h3 {
+    font-size: 34px;
+  }
+
+  .hero-heritage-text h5 {
+    font-size: 26px;
+  }
+
+  .hero-heritage-text p {
+    font-size: 20px;
+  }
+
+  .hero-heritage-img img {
+    max-width: 260px;
+  }
+
+  /* =====================
+     TIMELINE MOBILE FIX
+  ===================== */
+
+  .timeline::before {
+    left: 28px;
+    transform: none;
+  }
+
+  .timeline-item {
+    justify-content: flex-start !important;
+    padding: 0 0 0 80px !important;
+    min-height: 150px;
+  }
+
+  .timeline-item::before {
+    left: 28px;
+    transform: none;
+  }
+
+  .timeline-item::after {
+    left: 28px;
+    width: 28px;
+  }
+
+  .circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 18px 0 0;
+  }
+
+  .circle img {
+    
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .content {
+    text-align: left;
+    min-width: auto;
+  }
+
+  .content h4 {
+    font-size: 18px;
+  }
+
+  .content span {
+    font-size: 16px;
+  } 
+}
