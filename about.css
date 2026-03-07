@@ -743,9 +743,9 @@ a {
 }
 
 .team-card-back p {
-  font-size: 15px;
-  line-height: 1.5;
-  /* text-align: justify; */
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: justify;
 }
 
 /* EMPOWER */
@@ -1094,11 +1094,12 @@ a {
   }
 
   .team-card-back h4 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .team-card-back p {
-    font-size: 16px;
+    font-size: 13.5px;
+    width: 101%;
   }
 }
 
