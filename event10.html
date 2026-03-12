@@ -12,10 +12,12 @@
   <script src="./js/gsap.min.js"></script>
   <script src="./js/ScrollTrigger.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./responsive-global.css" />
 </head>
-<body>
+<body class="events-enhanced-page event8-layout-match">
 
-   <header class="site-header">
+ 
+  <header class="site-header">
     <div class="nav-container">
 
       <div class="nav-top">
@@ -23,133 +25,134 @@
         <div class="logo1">
           <img src="./assets/imgs/marks-biotech-logo 1.png" alt="" />
         </div>
-        
-        <div class="hamburger" id="hamburger"> ☰
-          
+
+        <div class="hamburger" id="hamburger"> ?
+
         </div>
       </div>
-        
-      
-        <ul class="nav-main-menu">
 
 
-          <div class="logo">
+      <ul class="nav-main-menu">
+
+
+        <div class="logo">
           <img src="./assets/imgs/marks-biotech-logo 1.png" alt="" />
         </div>
-          <li><a href="./index.html">Highlights</a></li>
+        <li><a href="./index.html">Highlights</a></li>
 
 
-          <!-- ================= Dental Implantology ================= -->
-          <li class="has-mega">
-            Dental Implantology<i class="fa-solid fa-angle-down"></i>
+        <!-- ================= Dental Implantology ================= -->
+        <li class="has-mega mega-dental">
+          Dental Implantology<i class="fa-solid fa-angle-down"></i>
 
-            <div class="mega-menu">
+          <div class="mega-menu">
 
 
-              <!-- COLUMN 2 -->
-              <div class="mega-column column-2" id="col2">
-                <ul>
-                  <li data-img="heritage"><a href="https://b-and-b-india.netlify.app/heritage">Heritage </a></li>
-                  <li id="unique" data-img="unique"><a href="#col3">Unique Design <i class="fa-solid fa-angle-right"></i></a></li>
-                  <li data-img="custom"><a href="https://b-and-b-india.netlify.app/subperiosteal">Customized
-                      Implants</a></li>
-                  <li data-img="guided"><a href="https://b-and-b-india.netlify.app/digitalsurgicalguide">Digital Guided
-                      Surgery</a></li>
-                  <li data-img="kits"><a href="https://b-and-b-india.netlify.app/surgicalkit">Surgical Kits</a></li>
-                  <li data-img="kits"><a href="https://b-and-b-india.netlify.app/tissue">Tissue Adhesive</a></li>
-                </ul>
-              </div>
-
-              <!-- COLUMN 3 -->
-              <div class="mega-column column-3" id="col3">
-                <h4>Implants</h4>
-                <ul>
-                  <li data-img="duravit-ev"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design1">DURAVIT
-                      EV</a></li>
-                  <li data-img="duravit-3p"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design2">DURAVIT
-                      3P</a></li>
-                  <li data-img="duravit-wide"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design3">DURAVIT
-                      Wide</a></li>
-                  <li data-img="duravit-pterygo"><a
-                      href="https://b-and-b-india.netlify.app/uniqueimplant#design4">DURAVIT Pterygo</a></li>
-                  <li data-img="duravit-slim"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design5">DURAVIT
-                      Slim</a></li>
-                  <li data-img="duravit-slim"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design6">DURAVIT
-                      Mini</a></li>
-                </ul>
-              </div>
-
-              <!-- IMAGES -->
-              <div class="mega-images">
-                <img id="img1" src="./assets/imgs/di-1.webp" />
-                <img id="img2" src="./assets/imgs/di-2.jpg" />
-              </div>
+            <!-- COLUMN 2 -->
+            <div class="mega-column column-2" id="col2">
+              <ul>
+                <li data-img="heritage"><a href="https://b-and-b-india.netlify.app/heritage">Heritage </a></li>
+                <li id="unique" data-img="unique"><a href="#col3">Unique Design <i
+                      class="fa-solid fa-angle-right"></i></a></li>
+                <li data-img="custom"><a href="https://b-and-b-india.netlify.app/subperiosteal">Customized
+                    Implants</a></li>
+                <li data-img="guided"><a href="https://b-and-b-india.netlify.app/digitalsurgicalguide">Digital Guided
+                    Surgery</a></li>
+                <li data-img="kits"><a href="https://b-and-b-india.netlify.app/surgicalkit">Surgical Kits</a></li>
+                <li data-img="kits"><a href="https://b-and-b-india.netlify.app/tissue">Tissue Adhesive</a></li>
+              </ul>
             </div>
-          </li>
 
-          <li><a href="https://b-and-b-india.netlify.app/conexaconnection">Prosthetics</a></li>
-
-          <!-- ================= Regenerative ================= -->
-          <li class="has-mega">
-            Regenerative Products<i class="fa-solid fa-angle-down"></i>
-            <div class="mega-menu">
-              <div class="mega-column">
-                <!-- <h4>Bonegraft</h4> -->
-                <ul>
-                  <li><a href="./allograft.html">Allograft</a></li>
-                  <li><a href="./xenograft.html">Xenograft</a></li>
-                  <li><a href="./xenograft.html#collagen">Collagen Membrane</a></li>
-                </ul>
-              </div>
-              <div class="mega-images">
-                <img src="./assets/imgs/g-1.jpg" />
-                <img src="./assets/imgs/g-2.jpg" />
-              </div>
+            <!-- COLUMN 3 -->
+            <div class="mega-column column-3" id="col3">
+              <h4>Implants</h4>
+              <ul>
+                <li data-img="duravit-ev"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design1">DURAVIT
+                    EV</a></li>
+                <li data-img="duravit-3p"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design2">DURAVIT
+                    3P</a></li>
+                <li data-img="duravit-wide"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design3">DURAVIT
+                    Wide</a></li>
+                <li data-img="duravit-pterygo"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design4">DURAVIT
+                    Pterygo</a></li>
+                <li data-img="duravit-slim"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design5">DURAVIT
+                    Slim</a></li>
+                <li data-img="duravit-slim"><a href="https://b-and-b-india.netlify.app/uniqueimplant#design6">DURAVIT
+                    Mini</a></li>
+              </ul>
             </div>
-          </li>
 
-          <!-- ================= Robotic ================= -->
-          <li class="has-mega">
-            Robotic Navigation<i class="fa-solid fa-angle-down"></i>
-            <div class="mega-menu">
-              <div class="mega-images">
-                <img src="./assets/imgs/r-1.jpg" />
-                <img src="./assets/imgs/r-2.jpg" />
-              </div>
-              <div class="mega-column">
-                <h4>Navident</h4>
-                <ul>
-                  <li><a href="https://marksbiotech.com/navident-3.0">Navident 3.0</a></li>
-                  <li><a href="https://marksbiotech.com/navident-4.0/">Navident 4.0 EVO</a></li>
-                </ul>
-              </div>
-              
+            <!-- IMAGES -->
+            <div class="mega-images">
+              <img id="img1" src="./assets/imgs/di-1.webp" />
+              <img id="img2" src="./assets/imgs/di-2.jpg" />
             </div>
-          </li>
+          </div>
+        </li>
 
+        <li><a href="https://b-and-b-india.netlify.app/conexaconnection">Prosthetics</a></li>
 
-          <li><a href="https://marksbiotech.com/micronmapper/">Photogrammetry</a></li>
-
-
-          <li class="has-mega">
-            Resources<i class="fa-solid fa-angle-down"></i>
-            <div class="mega-menu">
-              <div class="mega-column">
-                <ul>
-                   <li><a href="./events.html">Education</a></li>
-                  <li><a href="./blog.html">Blogs</a></li>
-                     <li><a href="./careers.html">Careers</li>
-                      <li><a href="./scientific-evidence.html">Scientific Evidence</li>
-                       <li><a href="./about.html">About Us</a></li>
-
-                       
-                </ul>
-              </div>
-              
+        <!-- ================= Regenerative ================= -->
+        <li class="has-mega mega-regenerative">
+          Regenerative Products<i class="fa-solid fa-angle-down"></i>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <!-- <h4>Bonegraft</h4> -->
+              <ul>
+                <li><a href="./allograft.html">Allograft</a></li>
+                <li><a href="./xenograft.html">Xenograft</a></li>
+                <li><a href="./xenograft.html#collagen">Collagen Membrane</a></li>
+              </ul>
             </div>
-          </li>
-        </ul>
-      
+            <div class="mega-images">
+              <img src="./assets/imgs/g-1.jpg" />
+              <img src="./assets/imgs/g-2.jpg" />
+            </div>
+          </div>
+        </li>
+
+        <!-- ================= Robotic ================= -->
+        <li class="has-mega mega-robotic">
+          Robotic Navigation<i class="fa-solid fa-angle-down"></i>
+          <div class="mega-menu">
+            <div class="mega-images">
+              <img src="./assets/imgs/r-1.jpg" />
+              <img src="./assets/imgs/3.0.png" />
+            </div>
+            <div class="mega-column">
+              <h4>Navident</h4>
+              <ul>
+                <li><a href="https://marksbiotech.com/navident-3.0">Navident 3.0</a></li>
+                <li><a href="https://marksbiotech.com/navident-4.0/">Navident 4.0 EVO</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+
+        <li><a href="https://marksbiotech.com/micronmapper/">Photogrammetry</a></li>
+
+
+        <li class="has-mega mega-resources">
+          Resources<i class="fa-solid fa-angle-down"></i>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <ul>
+                <li><a href="./events.html">Education</a></li>
+                <li><a href="./blog.html">Blogs</a></li>
+                <li><a href="./careers.html">Careers</a></li>
+                <li><a href="./scientific-evidence.html">Scientific Evidence</a></li>
+                
+
+
+              </ul>
+            </div>
+
+          </div>
+        </li>
+        <li><a href="./about.html">About Us</a></li>
+      </ul>
+
     </div>
   </header>
 
@@ -196,50 +199,109 @@
   </div>
 
 
-  <!-- ABOUT -->
-  <div class="event-about">
-    <div class="event-container">
+  <section class="event-gallery-section event-gallery-section--slider">
+  <div class="event-gallery-container">
+    <div class="gallery-title-wrap">
+      <h2 class="gallery-heading">Event Gallery</h2>
+      <p class="gallery-note">Swipe or use arrows. Click any image for full-screen view.</p>
+    </div>
 
-      <h2>About ISOI Conference 2025</h2>
+    <div class="event-gallery-carousel" data-event-gallery>
+      <button class="gallery-nav-btn" type="button" data-gallery-prev aria-label="Show previous images">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
 
-      <p>
-        The Indian Society of Oral Implantologists (ISOI) Conference is one of the
-        most prestigious implant-focused scientific gatherings in India. The 2025 edition
-        emphasizes digital integration, guided surgical protocols, regenerative advancements,
-        and precision-driven full-arch rehabilitation.
-      </p>
+      <div class="event-gallery-window" data-gallery-window>
+        <div class="event-gallery-track">
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/event10.jpg" alt="ISOI conference highlights 1">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-01.jpg.jpeg" alt="ISOI conference highlights 2">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-02.jpg.jpeg" alt="ISOI conference highlights 3">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-03.jpg.jpeg" alt="ISOI conference highlights 4">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-04.jpg.jpeg" alt="ISOI conference highlights 5">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-05.jpg.jpeg" alt="ISOI conference highlights 6">
+        </button>
+        <button class="gallery-slide" type="button" data-gallery-image>
+          <img src="./assets/imgs/Marks bio event-06.jpg.jpeg" alt="ISOI conference highlights 7">
+        </button>
+        </div>
+      </div>
 
-      <p>
-        As implant dentistry evolves, clinicians are increasingly adopting
-        computer-assisted workflows to enhance predictability, efficiency, and patient safety.
-        ISOI 2025 provides an immersive platform for exploring these advancements through:
-      </p>
-
-      <p>
-        • Scientific lectures by internationally recognized experts<br>
-        • Interactive panel discussions and Q&A sessions<br>
-        • Live surgical demonstrations showcasing cutting-edge techniques<br>
-        • Hands-on workshops and skill-building sessions<br>
-        • Industry-led technology showcases and product launches
-      </p>
-
-      <p>
-        Attendees will gain practical knowledge to incorporate digital dentistry tools
-        into their practices, network with peers and pioneers, and stay ahead in an
-        ever-evolving field.
-      </p>
-
+      <button class="gallery-nav-btn" type="button" data-gallery-next aria-label="Show next images">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
     </div>
   </div>
+</section>
+  <!-- ABOUT -->
+  <section class="course-intro">
+    <div class="course-wrap">
+            <aside class="course-side">
+        <h4>TAGS</h4>
+        <ul class="left-tag">
+          <li><a href="./events.html">EVENTS</a></li>
+          <li><a href="./events.html">UPCOMING EVENTS</a></li>
+          <li><a href="./events.html">PAST EVENTS</a></li>
+        </ul>
 
+        <h4>Share</h4>
+        <div class="share">
+          <a href="https://www.facebook.com/profile.php?id=100057220428403#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#https://api.whatsapp.com/send?phone=%2B919819893250&fbclid=IwY2xjawPoEE5leHRuA2FlbQIxMABicmlkETF6RGc1bGQ4MkNKQWFJZk92c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHp2k4EqPl-RmwWcQOpyXPFBwZ3hiBsmaGeaDHKGKfc-xCPP1c-quzaeBwZvZ_aem_T58P-OzKvAzVUFaIDa5-NQ"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/marks.biotechinc/"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCxWtOTeE4P1x1AaXL_Dlvpw"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </aside>
 
+      <div class="course-main">
+        <h1>About ISOI Conference 2025</h1>
+
+        <p>
+          The Indian Society of Oral Implantologists (ISOI) Conference is one of the
+          most prestigious implant-focused scientific gatherings in India. The 2025 edition
+          emphasizes digital integration, guided surgical protocols, regenerative advancements,
+          and precision-driven full-arch rehabilitation.
+        </p>
+
+        <p>
+          As implant dentistry evolves, clinicians are increasingly adopting
+          computer-assisted workflows to enhance predictability, efficiency, and patient safety.
+          ISOI 2025 provides an immersive platform for exploring these advancements through:
+        </p>
+
+        <ul class="event-list">
+          <li>Scientific lectures by internationally recognized experts</li>
+          <li>Interactive panel discussions and Q&amp;A sessions</li>
+          <li>Live surgical demonstrations showcasing cutting-edge techniques</li>
+          <li>Hands-on workshops and skill-building sessions</li>
+          <li>Industry-led technology showcases and product launches</li>
+        </ul>
+
+        <p>
+          Attendees will gain practical knowledge to incorporate digital dentistry tools
+          into their practices, network with peers and pioneers, and stay ahead in an
+          ever-evolving field.
+        </p>
+      </div>
+    </div>
+  </section>
   <!-- SHOWCASE -->
   <div class="event-showcase">
     <div class="event-container">
 
       <h2>Technologies & Solutions Presented by Marks Biotech</h2>
 
-      <div class="showcase-grid">
+      <!-- <div class="showcase-grid">
 
         <div class="showcase-card">
           <h3>Navident Dynamic Navigation System</h3>
@@ -283,12 +345,12 @@
           </p>
         </div>
 
-      </div>
+      </div> -->
 
 
-      <h2 style="margin-top:60px;">Why Visit Booth 51 & 52?</h2>
+      <!-- <h2 style="margin-top:60px;">Why Visit Booth 51 & 52?</h2>
 
-      <p>
+        <p>
         • Experience live navigation workflow demonstrations<br>
         • Discuss complex implant cases with technical experts<br>
         • Understand static vs dynamic guided surgery and their clinical benefits<br>
@@ -297,12 +359,12 @@
         • Receive personalized advice on incorporating cutting-edge technology into your clinic<br>
         • Access exclusive product demos and limited-time event specials<br>
         • Network with professionals and industry leaders in an interactive environment
-      </p>
+      </p> -->
 
 
       <h2 style="margin-top:60px;">Who Should Attend</h2>
 
-      <p>
+        <p>
         • Implantologists and oral surgeons seeking advanced digital solutions<br>
         • Prosthodontists focused on precision prosthetics and full-arch rehabilitation<br>
         • Restorative dentists integrating guided surgery and digital workflows<br>
@@ -313,7 +375,7 @@
 
       <h2 style="margin-top:60px;">Conference Highlights</h2>
 
-      <p>
+        <p>
         • Live Surgery & Navigation Demonstrations<br>
         • Expert Panel Discussions on emerging trends<br>
         • Hands-on Workshops with digital tools and implant systems<br>
@@ -324,7 +386,7 @@
 
       <h2 style="margin-top:60px;">Future Trends in Implantology</h2>
 
-      <p>
+        <p>
         ISOI 2025 emphasizes the integration of technology, precision, and patient-centric care:
       </p>
 
@@ -432,9 +494,16 @@
     </div>
      </footer>
 
+    <script src="./event-gallery.js"></script>
     <script src="./script2.js"></script>
   </body>
 </html>
-    
-</body>
-</html>
+
+
+
+
+
+
+
+
+

@@ -8,51 +8,174 @@ ScrollTrigger.config({
 });
 
 /* ================= BURGER ================= */
-      const burger = document.getElementById("hamburger");
-      const navMenu = document.querySelector(".nav-main-menu");
+const burger = document.getElementById("hamburger");
+const navMenu = document.querySelector(".nav-main-menu");
 
-      burger.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-      });
+function setMobileMenuState(isOpen) {
+  if (!navMenu) return;
+  navMenu.classList.toggle("active", isOpen);
+  document.body.classList.toggle("nav-open", isOpen);
+}
 
-      /* ================= MOBILE MEGA MENU CLICK ================= */
-      document.querySelectorAll(".has-mega").forEach((menu) => {
-        menu.addEventListener("click", (e) => {
-          if (window.innerWidth <= 767) {
-            e.stopPropagation();
-            menu.classList.toggle("open");
-          }
-        });
-      });
+if (burger && navMenu) {
+  burger.addEventListener("click", () => {
+    setMobileMenuState(!navMenu.classList.contains("active"));
+  });
+}
 
-      /* ================= UNIQUE → COL3 (MOBILE ONLY) ================= */
-      document.getElementById("unique").addEventListener("click", (e) => {
-        if (window.innerWidth <= 767) {
-          e.stopPropagation();
-          const col3 = document.getElementById("col3");
-          col3.style.display =
-            col3.style.display === "block" ? "none" : "block";
+const uniqueLink = document.querySelector("#unique > a");
+const col3 = document.getElementById("col3");
+const uniqueItem = document.getElementById("unique");
+const dentalMega = uniqueItem ? uniqueItem.closest(".has-mega") : null;
+let col3OriginalParent = null;
+let col3OriginalNextSibling = null;
+
+if (col3) {
+  col3OriginalParent = col3.parentElement;
+  col3OriginalNextSibling = col3.nextElementSibling;
+}
+
+function setCol3State(isOpen) {
+  if (!col3) return;
+  col3.classList.toggle("active", isOpen);
+  if (dentalMega) {
+    dentalMega.classList.toggle("col3-open", isOpen);
+  }
+}
+
+function placeCol3ForViewport() {
+  if (!col3 || !col3OriginalParent) return;
+
+  if (col3.parentElement !== col3OriginalParent) {
+    if (
+      col3OriginalNextSibling &&
+      col3OriginalNextSibling.parentElement === col3OriginalParent
+    ) {
+      col3OriginalParent.insertBefore(col3, col3OriginalNextSibling);
+    } else {
+      col3OriginalParent.appendChild(col3);
+    }
+  }
+
+  if (window.innerWidth > 767) {
+    setCol3State(false);
+  }
+}
+
+function showDesktopCol3() {
+  if (window.innerWidth > 767) {
+    setCol3State(true);
+  }
+}
+
+function hideDesktopCol3() {
+  if (window.innerWidth > 767) {
+    setCol3State(false);
+  }
+}
+
+/* ================= MOBILE MEGA MENU CLICK ================= */
+if (navMenu) {
+  navMenu.addEventListener("click", (e) => {
+    if (window.innerWidth > 767) return;
+
+    if (uniqueLink && col3 && e.target.closest("#unique > a")) {
+      e.preventDefault();
+      e.stopPropagation();
+      setCol3State(!col3.classList.contains("active"));
+      return;
+    }
+
+    // Keep submenu area clickable; do not toggle parent mega.
+    if (e.target.closest(".mega-menu")) {
+      return;
+    }
+
+    const currentMega = e.target.closest(".has-mega");
+    if (currentMega && navMenu.contains(currentMega)) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const shouldOpen = !currentMega.classList.contains("open");
+
+      navMenu.querySelectorAll(".has-mega.open").forEach((menu) => {
+        if (menu !== currentMega) {
+          menu.classList.remove("open");
         }
       });
 
-      const uniqueItem = document.getElementById("unique");
-      const col3 = document.getElementById("col3");
+      currentMega.classList.toggle("open", shouldOpen);
 
-      uniqueItem.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+      if (
+        col3 &&
+        (!shouldOpen || (uniqueItem && !currentMega.contains(uniqueItem)))
+      ) {
+        setCol3State(false);
+      }
+      return;
+    }
 
-        col3.classList.toggle("active");
+    // Close drawer only for top-level links.
+    const link = e.target.closest("a");
+    if (link && !link.closest(".mega-menu")) {
+      setMobileMenuState(false);
+    }
+  });
+}
+
+if (uniqueItem && col3) {
+  uniqueItem.addEventListener("mouseenter", showDesktopCol3);
+  uniqueItem.addEventListener("focusin", showDesktopCol3);
+}
+
+if (dentalMega && col3) {
+  dentalMega.addEventListener("mouseleave", hideDesktopCol3);
+}
+
+if (uniqueLink && col3) {
+  uniqueLink.addEventListener("click", (e) => {
+    if (window.innerWidth > 767) {
+      e.preventDefault();
+      e.stopPropagation();
+      setCol3State(true);
+    }
+  });
+}
+
+/* Optional: close when clicking outside mega menu */
+document.addEventListener("click", function (e) {
+  if (window.innerWidth <= 767) {
+    if (!e.target.closest(".has-mega")) {
+      document.querySelectorAll(".has-mega.open").forEach((menu) => {
+        menu.classList.remove("open");
       });
 
-      /* Optional: close when clicking outside mega menu */
-      document.addEventListener("click", function (e) {
-        if (!e.target.closest(".mega-menu")) {
-          col3.classList.remove("active");
-        }
-      });
+      setCol3State(false);
+    }
 
+    if (navMenu && navMenu.classList.contains("active") && !e.target.closest(".site-header")) {
+      setMobileMenuState(false);
+    }
+  } else if (!e.target.closest(".has-mega") && col3) {
+    setCol3State(false);
+  }
+});
 
+window.addEventListener("resize", () => {
+  placeCol3ForViewport();
+
+  if (window.innerWidth > 767) {
+    setMobileMenuState(false);
+
+    document.querySelectorAll(".has-mega.open").forEach((menu) => {
+      menu.classList.remove("open");
+    });
+
+    setCol3State(false);
+  }
+});
+
+placeCol3ForViewport();
 // ======================================
 // HERO SECTION (ON LOAD)
 // ======================================
@@ -126,14 +249,21 @@ window.addEventListener("DOMContentLoaded", function () {
   const allSlides = track.querySelectorAll(".card");
 
   let index = 1;
-  const slideWidth = container.clientWidth;
+  let slideWidth = container.clientWidth;
+
+  function setTrackPosition(withTransition = false) {
+    slideWidth = container.clientWidth;
+    track.style.transition = withTransition
+      ? "transform 0.5s cubic-bezier(.77,0,.24,1)"
+      : "none";
+    track.style.transform = `translateX(-${slideWidth * index}px)`;
+  }
 
   window.addEventListener("resize", () => {
-  track.style.transition = "none";
-  track.style.transform = `translateX(-${container.clientWidth * index}px)`;
-});
+    setTrackPosition(false);
+  });
 
-  track.style.transform = `translateX(-${slideWidth * index}px)`;
+  setTrackPosition(false);
 
   // Arrows
   const prevBtn = document.createElement("button");
@@ -148,8 +278,7 @@ window.addEventListener("DOMContentLoaded", function () {
   container.appendChild(nextBtn);
 
   function moveToSlide() {
-    track.style.transition = "transform 0.5s cubic-bezier(.77,0,.24,1)";
-    track.style.transform = `translateX(-${slideWidth * index}px)`;
+    setTrackPosition(true);
   }
 
   function nextSlide() {
@@ -166,15 +295,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
   track.addEventListener("transitionend", () => {
     if (allSlides[index] === firstClone) {
-      track.style.transition = "none";
       index = 1;
-      track.style.transform = `translateX(-${slideWidth * index}px)`;
+      setTrackPosition(false);
     }
 
     if (allSlides[index] === lastClone) {
-      track.style.transition = "none";
       index = allSlides.length - 2;
-      track.style.transform = `translateX(-${slideWidth * index}px)`;
+      setTrackPosition(false);
     }
   });
 
@@ -225,31 +352,33 @@ gsap.from(".section-right h2, .section-right p", {
 // EXPAND CARDS
 // ======================================
 const cardex = document.querySelectorAll(".ex-card");
-let activeCard = cardex[0];
+if (cardex.length) {
+  let activeCard = cardex[0];
 
-gsap.set(cardex, { width: 70 });
-gsap.set(activeCard, { width: 360 });
-activeCard.classList.add("active");
+  gsap.set(cardex, { width: 70 });
+  gsap.set(activeCard, { width: 360 });
+  activeCard.classList.add("active");
 
-cardex.forEach((card) => {
-  card.addEventListener("click", () => {
-    if (card === activeCard) {
-      gsap.to(card, { width: 70, duration: 0.4, ease: "power3.out" });
-      card.classList.remove("active");
-      activeCard = null;
-      return;
-    }
+  cardex.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (card === activeCard) {
+        gsap.to(card, { width: 70, duration: 0.4, ease: "power3.out" });
+        card.classList.remove("active");
+        activeCard = null;
+        return;
+      }
 
-    if (activeCard) {
-      gsap.to(activeCard, { width: 70, duration: 0.4, ease: "power3.out" });
-      activeCard.classList.remove("active");
-    }
+      if (activeCard) {
+        gsap.to(activeCard, { width: 70, duration: 0.4, ease: "power3.out" });
+        activeCard.classList.remove("active");
+      }
 
-    gsap.to(card, { width: 360, duration: 0.6, ease: "power4.out" });
-    card.classList.add("active");
-    activeCard = card;
+      gsap.to(card, { width: 360, duration: 0.6, ease: "power4.out" });
+      card.classList.add("active");
+      activeCard = card;
+    });
   });
-});
+}
 
 // ----------  xenograft -------
 
@@ -257,3 +386,31 @@ cardex.forEach((card) => {
 
 
  
+// ======================================
+// ABOUT TEAM CARDS (HOVER + CLICK TOGGLE)
+// ======================================
+const teamCards = document.querySelectorAll(".team-card");
+const hoverCapable = window.matchMedia("(hover: hover)").matches;
+
+if (teamCards.length) {
+  teamCards.forEach((card) => {
+    let isLocked = false;
+
+    // Hover preview flip on desktop/laptop pointers.
+    card.addEventListener("mouseenter", () => {
+      if (!hoverCapable || isLocked) return;
+      card.classList.add("is-flipped");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      if (!hoverCapable || isLocked) return;
+      card.classList.remove("is-flipped");
+    });
+
+    // Click toggles persistent flip state for all cards.
+    card.addEventListener("click", () => {
+      isLocked = !isLocked;
+      card.classList.toggle("is-flipped", isLocked);
+    });
+  });
+}
