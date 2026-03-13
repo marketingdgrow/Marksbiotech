@@ -359,6 +359,7 @@ input[type="radio"]{
   flex:1;
   width: 100%;
   text-transform:none;
+  letter-spacing: 0.09cap;
 }
 
 .events-grid .event-date{
