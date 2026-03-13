@@ -1005,24 +1005,8 @@ a {
   object-fit: contain;
 }
 
-/* TABLET (768px – 1024px) */
-@media (max-width: 1024px) {
-  .section8-img {
-    width: 100%;
-    height: 100vh;
-  }
-}
 
-/* MOBILE (<= 576px) */
-@media (max-width: 576px) {
-  .section8 {
-    padding: 0;   /* remove gaps */
-  }
-  .section8-img {
-    width: 100%;
-    height: 100vh;
-  }
-}
+
 
 
 
@@ -1483,6 +1467,7 @@ a {
 
   .ex-card {
     height: 84px;
+    touch-action: manipulation;
   }
 
   .ex-card.active {
@@ -1497,6 +1482,23 @@ a {
 
   .card-content {
     padding: 10px;
+  }
+
+  .section-4 .card-content {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
+  .section-4 .ex-card.active .card-content {
+    opacity: 1 !important;
+    pointer-events: none;
+  }
+
+  .section-4 .card-bg,
+  .section-4 .card-bg *,
+  .section-4 .card-content,
+  .section-4 .card-content * {
+    pointer-events: none;
   }
 
   .section-5 {
@@ -1521,7 +1523,7 @@ a {
   }
 
   .section6 {
-    padding: 44px 0;
+    padding: 44px 0 0px;
   }
 
   .section6-container {
@@ -1537,12 +1539,14 @@ a {
     height: 68vh;
     min-height: 320px;
     max-height: 520px;
+    min-width: 100%;
+    margin-top: 50px;
   }
 
   .section8-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:cover;
     object-position: center;
     animation: section8ZoomIn 12s ease-in-out infinite alternate;
   }
@@ -1555,6 +1559,6 @@ a {
   }
 
   .section8-img {
-    animation-duration: 10s;
+    animation-duration: 12s;
   }
 }

@@ -351,31 +351,200 @@ gsap.from(".section-right h2, .section-right p", {
 // ======================================
 // EXPAND CARDS
 // ======================================
-const cardex = document.querySelectorAll(".ex-card");
+const cardex = Array.from(document.querySelectorAll(".section-4 .ex-card"));
 if (cardex.length) {
-  let activeCard = cardex[0];
+  let activeCard = document.querySelector(".section-4 .ex-card.active") || cardex[0];
+  let accordionResizeFrame = null;
+  let mobilePointerState = null;
+  let suppressMobileClickUntil = 0;
 
-  gsap.set(cardex, { width: 70 });
-  gsap.set(activeCard, { width: 360 });
-  activeCard.classList.add("active");
+  function isMobileAccordion() {
+    return window.innerWidth <= 767;
+  }
+
+  function resetMobilePointerState() {
+    mobilePointerState = null;
+  }
+
+  function isInteractiveTarget(event) {
+    return event.target instanceof Element && Boolean(event.target.closest("a, button"));
+  }
+
+  function getAccordionConfig() {
+    if (isMobileAccordion()) {
+      return {
+        property: "height",
+        collapsed: 84,
+        expanded: 260,
+        closeDuration: 0.35,
+        openDuration: 0.45,
+      };
+    }
+
+    if (window.innerWidth <= 1024) {
+      return {
+        property: "width",
+        collapsed: 65,
+        expanded: 260,
+        closeDuration: 0.4,
+        openDuration: 0.55,
+      };
+    }
+
+    return {
+      property: "width",
+      collapsed: 70,
+      expanded: 360,
+      closeDuration: 0.4,
+      openDuration: 0.6,
+    };
+  }
+
+  function syncAccordionState() {
+    const { property, collapsed, expanded } = getAccordionConfig();
+
+    cardex.forEach((card) => {
+      const isActive = card === activeCard;
+
+      gsap.killTweensOf(card);
+      gsap.set(card, { clearProps: "width,height" });
+      if (property === "height") {
+        card.style.height = `${isActive ? expanded : collapsed}px`;
+      } else {
+        gsap.set(card, { [property]: isActive ? expanded : collapsed });
+      }
+
+      card.classList.toggle("active", isActive);
+      card.setAttribute("aria-expanded", isActive ? "true" : "false");
+    });
+  }
+
+  function toggleAccordionCard(card) {
+    if (card === activeCard) {
+      animateAccordionCard(card, false);
+      activeCard = null;
+      return;
+    }
+
+    if (activeCard) {
+      animateAccordionCard(activeCard, false);
+    }
+
+    animateAccordionCard(card, true);
+    activeCard = card;
+  }
+
+  function animateAccordionCard(card, isActive) {
+    const { property, collapsed, expanded, closeDuration, openDuration } = getAccordionConfig();
+
+    gsap.killTweensOf(card);
+    card.classList.toggle("active", isActive);
+    card.setAttribute("aria-expanded", isActive ? "true" : "false");
+
+    if (property === "height") {
+      card.style.height = `${isActive ? expanded : collapsed}px`;
+      return;
+    }
+
+    gsap.to(card, {
+      [property]: isActive ? expanded : collapsed,
+      duration: isActive ? openDuration : closeDuration,
+      ease: isActive ? "power4.out" : "power3.out",
+      overwrite: true,
+    });
+  }
+
+  syncAccordionState();
 
   cardex.forEach((card) => {
-    card.addEventListener("click", () => {
-      if (card === activeCard) {
-        gsap.to(card, { width: 70, duration: 0.4, ease: "power3.out" });
-        card.classList.remove("active");
-        activeCard = null;
+    card.addEventListener("click", (event) => {
+      if (isInteractiveTarget(event)) return;
+
+      if (isMobileAccordion()) {
+        if (Date.now() < suppressMobileClickUntil) {
+          event.preventDefault();
+          return;
+        }
+
+        toggleAccordionCard(card);
         return;
       }
 
-      if (activeCard) {
-        gsap.to(activeCard, { width: 70, duration: 0.4, ease: "power3.out" });
-        activeCard.classList.remove("active");
-      }
+      toggleAccordionCard(card);
+    });
 
-      gsap.to(card, { width: 360, duration: 0.6, ease: "power4.out" });
-      card.classList.add("active");
-      activeCard = card;
+    card.addEventListener(
+      "pointerdown",
+      (event) => {
+        if (!isMobileAccordion()) return;
+
+        mobilePointerState = {
+          card,
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          moved: false,
+        };
+      },
+      { passive: true }
+    );
+
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!isMobileAccordion() || !mobilePointerState) return;
+        if (mobilePointerState.card !== card || mobilePointerState.pointerId !== event.pointerId) return;
+
+        const movedX = Math.abs(event.clientX - mobilePointerState.startX);
+        const movedY = Math.abs(event.clientY - mobilePointerState.startY);
+        if (movedX > 10 || movedY > 10) {
+          mobilePointerState.moved = true;
+        }
+      },
+      { passive: true }
+    );
+
+    card.addEventListener("pointercancel", resetMobilePointerState, { passive: true });
+
+    card.addEventListener(
+      "pointerup",
+      (event) => {
+        if (!isMobileAccordion() || !mobilePointerState) return;
+        if (mobilePointerState.card !== card || mobilePointerState.pointerId !== event.pointerId) return;
+
+        const shouldToggle = !mobilePointerState.moved && !isInteractiveTarget(event);
+        resetMobilePointerState();
+
+        if (!shouldToggle) return;
+
+        suppressMobileClickUntil = Date.now() + 450;
+        event.preventDefault();
+        toggleAccordionCard(card);
+      },
+      { passive: false }
+    );
+
+    card.addEventListener("pointerleave", () => {
+      if (!isMobileAccordion()) return;
+      resetMobilePointerState();
+    });
+
+    card.addEventListener("lostpointercapture", () => {
+      if (!isMobileAccordion()) return;
+      resetMobilePointerState();
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (accordionResizeFrame) {
+      cancelAnimationFrame(accordionResizeFrame);
+    }
+
+    accordionResizeFrame = requestAnimationFrame(() => {
+      resetMobilePointerState();
+      suppressMobileClickUntil = 0;
+      syncAccordionState();
+      accordionResizeFrame = null;
     });
   });
 }

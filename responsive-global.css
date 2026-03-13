@@ -1,7 +1,7 @@
 :root {
   --mobile-page-padding: 10px;
   --mobile-section-padding: clamp(20px, 8vw, 28px);
-  --mobile-section-gap: clamp(12px, 4vw, 22px);
+  --mobile-section-gap: clamp(0px, 4vw, 0px);
 }
 
 @media (max-width: 767px) {

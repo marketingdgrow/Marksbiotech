@@ -16,7 +16,7 @@
   --red-color: #ce2017;
   --gray-color: #b2b2b2;
   --event-card-width: 360px;
-  --event-card-height: 330px;
+  --event-card-height: 280px;
   --event-card-image-height: 220px;
 }
 
@@ -262,12 +262,12 @@ input[type="radio"]{
 
 /* Grid */
 .events-grid{
-  max-width:1300px;
+  max-width:1200px;
   margin:auto;
   padding:20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(var(--event-card-width),var(--event-card-width)));
-  gap:30px;
+  gap:40px;
   grid-auto-rows:1fr;
   justify-content:center;
   align-items:stretch;
@@ -650,7 +650,8 @@ input[type="radio"]{
 
 /* CONTENT */
 .event-content p{
-  font-size:15px;
+  font-size:16px;
+  font-weight: 600;
   line-height:1.8;
   color:#c7c7c7;
   margin-bottom:20px;
@@ -1595,5 +1596,324 @@ input[type="radio"]{
   }
   100%{
     transform: translateX(-100%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.72s ease, transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.events-list-page .top-banner-careers {
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.events-list-page .events-grid {
+  width: min(1300px, 100%);
+  padding: 20px clamp(14px, 3vw, 24px) 34px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+  grid-auto-rows: 1fr;
+}
+
+.events-list-page .events-grid .event-card {
+  width: 100%;
+  max-width: var(--event-card-width);
+  height: auto;
+  min-height: var(--event-card-height);
+  justify-self: center;
+  transform: translate3d(0, 20px, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.events-list-page .events-grid .event-card img {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.events-list-page .events-grid .event-content {
+  height: auto;
+  min-height: clamp(96px, 8vw, 112px);
+  padding: 18px 18px 20px;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.events-list-page .events-grid .event-title {
+  flex: initial;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.events-enhanced-page .course-hero,
+.events-enhanced-page .event-hero,
+.events-enhanced-page .course-intro,
+.events-enhanced-page .event-details,
+.events-enhanced-page .event-about,
+.events-enhanced-page .event-showcase {
+  scroll-margin-top: 96px;
+}
+
+.events-enhanced-page .event-highlight {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.events-enhanced-page .course-side,
+.events-enhanced-page .event-sidebar {
+  align-self: start;
+}
+
+.events-enhanced-page .share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.events-enhanced-page .share a {
+  margin-right: 0;
+}
+
+.events-enhanced-page .event-gallery-window {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 16px;
+  padding-bottom: 4px;
+  touch-action: pan-x pan-y;
+}
+
+.events-enhanced-page .event-gallery-track {
+  gap: 14px;
+}
+
+.events-enhanced-page .gallery-slide {
+  transform: translateZ(0);
+  will-change: transform;
+  touch-action: pan-x pan-y;
+}
+
+.events-enhanced-page .course-right img,
+.events-enhanced-page .event-right img {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .events-enhanced-page .course-container,
+  .events-enhanced-page .course-wrap,
+  .events-enhanced-page .event-wrapper,
+  .events-enhanced-page .hero-grid {
+    gap: 22px;
+  }
+
+  .events-enhanced-page .course-side,
+  .events-enhanced-page .event-sidebar {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  }
+}
+
+@media (max-width: 700px) {
+  .events-list-page .events-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px 12px 28px;
+  }
+
+  .events-list-page .events-grid .event-card {
+    max-width: 100%;
+    min-height: 0;
+    border-radius: 18px;
+  }
+
+  .events-list-page .events-grid .event-card::before {
+    animation-duration: 4.6s;
+    opacity: 0.58;
+  }
+
+  .events-list-page .events-grid .event-content {
+    min-height: 100%;
+    padding: 15px 14px 18px;
+  }
+
+  .events-list-page .events-grid .event-title {
+    font-size: 1.02rem;
+    line-height: 1.38;
+    text-align: left;
+  }
+
+  .events-list-page .tabs {
+    width: min(100%, calc(100% - 24px));
+  }
+}
+
+@media (max-width: 640px) {
+  .reveal-up {
+    transform: translateY(18px);
+    transition-duration: 0.58s;
+  }
+
+  .events-enhanced-page {
+    --event-title-size: clamp(1.75rem, 7.8vw, 2.2rem);
+    --event-subtitle-size: clamp(1.05rem, 5.2vw, 1.35rem);
+    --event-section-title-size: clamp(1.45rem, 6vw, 1.9rem);
+    --event-body-size: 0.98rem;
+  }
+
+  .events-list-page .tabs {
+    gap: 10px;
+    align-items: stretch;
+    padding: 0 4px;
+  }
+
+  .events-list-page .tabs label {
+    flex: 1 1 0;
+    text-align: center;
+  }
+
+  .events-list-page .sub-tabs {
+    justify-content: flex-start;
+    gap: 10px 14px;
+    width: min(100%, calc(100% - 24px));
+  }
+
+  .events-enhanced-page .course-hero,
+  .events-enhanced-page .event-hero {
+    padding: 38px 0 24px;
+  }
+
+  .event8-layout-match .event-hero {
+    padding: 42px 0 24px;
+  }
+
+  .events-enhanced-page .course-intro,
+  .events-enhanced-page .event-details,
+  .events-enhanced-page .event-about,
+  .events-enhanced-page .event-showcase {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .events-enhanced-page .course-side,
+  .events-enhanced-page .event-sidebar {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .events-enhanced-page .left-tag,
+  .events-enhanced-page .event-sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .events-enhanced-page .left-tag li,
+  .events-enhanced-page .event-sidebar ul li {
+    margin: 0;
+  }
+
+  .events-enhanced-page .left-tag li a,
+  .events-enhanced-page .event-sidebar ul li {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .events-enhanced-page .share a {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .events-enhanced-page .event-highlight {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .events-enhanced-page .course-main p,
+  .events-enhanced-page .event-content p,
+  .events-enhanced-page .event-about p,
+  .events-enhanced-page .event-showcase p {
+    line-height: 1.72;
+  }
+
+  .events-enhanced-page .event-list {
+    padding-left: 18px;
+  }
+
+  .events-enhanced-page .event-gallery-window {
+    scroll-padding-inline: 12px;
+  }
+
+  .events-enhanced-page .gallery-slide {
+    flex-basis: min(82vw, 300px);
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .events-enhanced-page .gallery-slide img {
+    border-radius: 10px;
+  }
+}
+
+@media (hover: none) {
+  .events-list-page .events-grid .event-card:hover,
+  .events-enhanced-page .gallery-slide:hover,
+  .showcase-card:hover {
+    transform: none;
+  }
+
+  .events-list-page .events-grid .event-card:hover img {
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-up,
+  .events-list-page .events-grid .event-card,
+  .events-list-page .events-grid .event-card::before,
+  .events-list-page .events-grid .event-card img,
+  .events-enhanced-page .gallery-slide,
+  .showcase-card,
+  .running-text {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .events-enhanced-page .event-gallery-window {
+    scroll-behavior: auto;
   }
 }
