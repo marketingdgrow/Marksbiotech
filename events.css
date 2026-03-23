@@ -161,12 +161,14 @@ input[type="radio"]{
 }
 
 /* Active Tab */
-#past-events:checked ~ .tabs label[for="past-events"],
+#year-2024:checked ~ .tabs label[for="year-2024"],
+#year-2025:checked ~ .tabs label[for="year-2025"],
 #year-2026:checked ~ .tabs label[for="year-2026"]{
   color:#fff;
 }
 
-#past-events:checked ~ .tabs label[for="past-events"]::after,
+#year-2024:checked ~ .tabs label[for="year-2024"]::after,
+#year-2025:checked ~ .tabs label[for="year-2025"]::after,
 #year-2026:checked ~ .tabs label[for="year-2026"]::after{
   transform:scaleX(1);
 }
@@ -219,21 +221,50 @@ input[type="radio"]{
   transform:scaleX(.42);
 }
 
-#year-2026:checked ~ .sub-tabs{
-  display:flex;
+/* Show only selected year sub-tabs */
+#year-2024:checked ~ .sub-2024 {
+display: flex;
 }
 
+#year-2025:checked ~ .sub-2025 {
+display: flex;
+}
+
+#year-2026:checked ~ .sub-2026 {
+display: flex;
+}
+
+
 #year-2026:checked ~ #y2026-workshop:checked ~ .sub-tabs label[for="y2026-workshop"],
-#year-2026:checked ~ #y2026-conference:checked ~ .sub-tabs label[for="y2026-conference"],
-#year-2026:checked ~ #y2026-upcoming:checked ~ .sub-tabs label[for="y2026-upcoming"]{
+#year-2026:checked ~ #y2026-conference:checked ~ .sub-tabs label[for="y2026-conference"]{
+  color:#fff;
+}
+
+#year-2025:checked ~ #y2025-workshop:checked ~ .sub-tabs label[for="y2025-workshop"],
+#year-2025:checked ~ #y2025-conference:checked ~ .sub-tabs label[for="y2025-conference"]{
+  color:#fff;
+}
+
+#year-2024:checked ~ #y2024-workshop:checked ~ .sub-tabs label[for="y2024-workshop"],
+#year-2024:checked ~ #y2024-conference:checked ~ .sub-tabs label[for="y2024-conference"]{
   color:#fff;
 }
 
 #year-2026:checked ~ #y2026-workshop:checked ~ .sub-tabs label[for="y2026-workshop"]::after,
-#year-2026:checked ~ #y2026-conference:checked ~ .sub-tabs label[for="y2026-conference"]::after,
-#year-2026:checked ~ #y2026-upcoming:checked ~ .sub-tabs label[for="y2026-upcoming"]::after{
+#year-2026:checked ~ #y2026-conference:checked ~ .sub-tabs label[for="y2026-conference"]::after{
   transform:scaleX(1);
 }
+
+#year-2025:checked ~ #y2025-workshop:checked ~ .sub-tabs label[for="y2025-workshop"]::after,
+#year-2025:checked ~ #y2025-conference:checked ~ .sub-tabs label[for="y2025-conference"]::after{
+  transform:scaleX(1);
+}
+
+#year-2024:checked ~ #y2024-workshop:checked ~ .sub-tabs label[for="y2024-workshop"]::after,
+#year-2024:checked ~ #y2024-conference:checked ~ .sub-tabs label[for="y2024-conference"]::after{
+  transform:scaleX(1);
+}
+
 
 @media (max-width:640px){
   .tabs{
@@ -484,11 +515,15 @@ input[type="radio"]{
 
 /* ---------------- FILTER LOGIC ---------------- */
 
-/* Default hide */
-#past-events:checked ~ .events-grid .event-card,
-#year-2026:checked ~ .events-grid .event-card{
-  display:none;
+
+
+/* Hide all events first */
+#year-2024:checked ~ .events-grid .event-card,
+#year-2025:checked ~ .events-grid .event-card,
+#year-2026:checked ~ .events-grid .event-card {
+display: none;
 }
+
 
 /* Show Past Events */
 #past-events:checked ~ .events-grid .past-event{
@@ -496,17 +531,73 @@ input[type="radio"]{
 }
 
 /* Show 2026 sub filters (temporary mapped to existing event categories) */
-#year-2026:checked ~ #y2026-workshop:checked ~ .events-grid .workshop{
+/* #year-2026:checked ~ #y2026-workshop:checked ~ .events-grid .workshop{
   display:flex;
 }
 
 #year-2026:checked ~ #y2026-conference:checked ~ .events-grid .conference{
   display:flex;
+} */
+
+
+
+
+/* Hide all events */
+.event-card {
+display: none;
 }
 
-#year-2026:checked ~ #y2026-upcoming:checked ~ .events-grid .upcoming{
-  display:flex;
+/* ===== 2024 ===== */
+#year-2024:checked ~ #y2024-workshop:checked ~ .events-grid .year-2024-event.workshop {
+display: flex;
 }
+
+#year-2024:checked ~ #y2024-conference:checked ~ .events-grid .year-2024-event.conference {
+display: flex;
+}
+
+
+/* ===== 2025 ===== */
+#year-2025:checked ~ #y2025-workshop:checked ~ .events-grid .year-2025-event.workshop {
+display: flex;
+}
+
+#year-2025:checked ~ #y2025-conference:checked ~ .events-grid .year-2025-event.conference {
+display: flex;
+}
+
+
+
+/* ===== 2026 ===== */
+#year-2026:checked ~ #y2026-workshop:checked ~ .events-grid .year-2026-event.workshop {
+display: flex;
+}
+
+#year-2026:checked ~ #y2026-conference:checked ~ .events-grid .year-2026-event.conference {
+display: flex;
+}
+
+
+/* #year-2025:checked ~ .sub-tabs {
+  display:flex;
+} */
+
+
+/* .sub-tabs label {
+  display: none;
+} */
+
+/* #year-2024:checked ~ .sub-tabs .sub-2024 {
+  display: inline-block;
+}
+
+#year-2025:checked ~ .sub-tabs .sub-2025 {
+  display: inline-block;
+}
+
+#year-2026:checked ~ .sub-tabs .sub-2026 {
+  display: inline-block;
+} */
 
 
 
