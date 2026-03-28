@@ -789,3 +789,217 @@ document.querySelectorAll('.nav-main-menu > li.has-mega > a').forEach(link => {
     }
   });
 });
+
+
+
+
+
+
+// const form = document.getElementById("jobForm");
+
+// form.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   const formData = {
+//     name: form.querySelectorAll("input")[0].value,
+//     email: form.querySelectorAll("input")[1].value,
+//     mobile: form.querySelectorAll("input")[2].value,
+//     city: form.querySelectorAll("input")[3].value,
+//     role: form.querySelectorAll("input")[4].value,
+//     resume: form.querySelectorAll("input")[5].value,
+//     message: form.querySelector("textarea").value,
+//   };
+
+//   const response = await fetch("https://script.google.com/macros/s/AKfycbwlHY-kEGbcc5eRMymhXD1JrrXfig_myDIRGRgmEZiYTtakqodipyBpHI3ihweR4GiWGg/exec", {
+//     method: "POST",
+//     body: JSON.stringify(formData),
+//   });
+
+//   const result = await response.json();
+
+//   if (result.result === "success") {
+//     alert("Application Submitted Successfully ✅");
+//     form.reset();
+//   } else {
+//     alert("Error ❌");
+//   }
+// });
+
+
+
+
+// const form = document.getElementById("jobForm");
+
+// form.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   const formData = new FormData(form);
+
+//   try {
+//     const response = await fetch("https://script.google.com/macros/s/AKfycbwlHY-kEGbcc5eRMymhXD1JrrXfig_myDIRGRgmEZiYTtakqodipyBpHI3ihweR4GiWGg/exec", {
+//       method: "POST",
+//       body: formData
+//     });
+
+//     const result = await response.json();
+
+//     if (result.result === "success") {
+//       alert("Application Submitted ✅");
+//       form.reset();
+//     } else {
+//       alert("Submission Failed ❌");
+//     }
+
+//   } catch (error) {
+//     console.error("Error:", error);
+//     alert("Something went wrong ❌");
+//   }
+// });
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const form = document.querySelector("#form");
+
+//   if (form) {
+//     form.addEventListener("submit", function (e) {
+//       e.preventDefault(); // 🚨 THIS IS WHAT YOU MISSED
+
+//       alert("Form submitted"); // test first
+
+//       const formData = new FormData(form);
+
+//       try {
+//     const response = await fetch("https://script.google.com/macros/s/AKfycbwlHY-kEGbcc5eRMymhXD1JrrXfig_myDIRGRgmEZiYTtakqodipyBpHI3ihweR4GiWGg/exec", {
+//       method: "POST",
+//       body: formData
+//     });
+
+//     const result = await response.json();
+
+//     if (result.result === "success") {
+//       alert("Application Submitted ✅");
+//       form.reset();
+//     } else {
+//       alert("Submission Failed ❌");
+//     }
+
+//   } catch (error) {
+//     console.error("Error:", error);
+//     alert("Something went wrong ❌");
+//   }
+
+//     });
+//   }
+// });
+
+
+
+
+ const form = document.querySelector("#form");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // 🚨 stop page refresh
+
+      // Get form values
+      const formData = new FormData(form);
+
+      // Optional: simple validation
+      const name = formData.get("name");
+      const email = formData.get("email");
+
+      if (!name || !email) {
+        alert("Please fill all required fields");
+        return;
+      }
+
+      console.log("Submitting form...");
+
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwlHY-kEGbcc5eRMymhXD1JrrXfig_myDIRGRgmEZiYTtakqodipyBpHI3ihweR4GiWGg/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log("Success:", data);
+          alert("Form submitted successfully!");
+
+          form.reset(); // clear form
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Something went wrong!");
+        });
+    });
+  } else {
+    console.warn("Form #careerForm not found");
+  }
+
+
+
+
+const subForm = document.getElementById("form1");
+
+subForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = subForm.querySelector("input").value;
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbwLdDBvdJyKUWr0Z_-m17aabIDsJxXZmpGQxXZXEWiwDMIw4qrQfk2ckULtloj9eu0/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      type: "subscribe",
+      email: email
+    }),
+  });
+
+  const result = await response.json();
+
+  if (result.result === "success") {
+    alert("Subscribed Successfully ✅");
+    subForm.reset();
+  } else {
+    alert("Error ❌");
+  }
+});
+
+
+
+
+
+//   document.addEventListener("DOMContentLoaded", () => {
+//   const form = document.querySelector("#form");
+
+//   if (!form) {
+//     console.error("Form not found");
+//     return;
+//   }
+
+//   form.addEventListener("submit", function (e) {
+//     e.preventDefault(); // 🚨 STOP redirect
+
+//     const formData = new FormData(form);
+
+//     fetch("https://formsubmit.co/marketingdgrow@gmail.com", {
+//       method: "POST",
+//       body: formData,
+//       headers: {
+//         'Accept': 'application/json'
+//       }
+//     })
+//       .then(response => {
+//         if (response.ok) {
+//           alert("✅ Application submitted successfully!");
+//           form.reset();
+//         } else {
+//           throw new Error("Submission failed");
+//         }
+//       })
+//       .catch(error => {
+//         console.error(error);
+//         alert("❌ Something went wrong. Try again.");
+//       });
+//   });
+// });

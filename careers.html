@@ -17,7 +17,6 @@
 <body>
     
    
- 
   <header class="site-header">
     <div class="nav-container">
 
@@ -34,8 +33,6 @@
 
 
       <ul class="nav-main-menu">
-
-
         <div class="logo">
           <img src="./assets/imgs/marks-biotech-logo 1.png" alt="" />
         </div>
@@ -53,10 +50,10 @@
             <div class="mega-column column-2" id="col2">
               <ul>
                 <li data-img="heritage"><a href="https://b-and-b-india.netlify.app/heritage">Heritage </a></li>
-                <li id="unique" data-img="unique"><a href="#col3">Unique Design <i
-                      class="fa-solid fa-angle-right"></i></a></li>
+                <li id="unique" data-img="unique"><a href="#col3">Unique Design <i class="fa-solid fa-angle-right"></i></a></li>
                 <li data-img="custom"><a href="https://b-and-b-india.netlify.app/subperiosteal">Customized
                     Implants</a></li>
+                <li data-img="custom"><a href="https://b-and-b-india.netlify.app/tissue">Tissue Adhesive</a></li>
                 <li data-img="guided"><a href="https://b-and-b-india.netlify.app/digitalsurgicalguide">Digital Guided
                     Surgery</a></li>
                 <li data-img="kits"><a href="https://b-and-b-india.netlify.app/surgicalkit">Surgical Kits</a></li>
@@ -156,7 +153,6 @@
 
     </div>
   </header>
-
 
     <!-- ============================
      CAREERS PAGE
@@ -292,68 +288,48 @@
 </section>
 
 
-<section class="apply" id="form">
+<section class="apply" >
   <h2>Application Form</h2>
 
-  <form class="apply-form">
+  <form class="apply-form" id="form" >
 
     <label style="text-align:left;">Full Name <span style="color:red">*</span></label>
-    <input type="text" placeholder="Enter Full Name" required>
+    <input type="text" name="name" placeholder="Enter Full Name"  required>
 
     <label style="text-align:left;">Email Address <span style="color:red">*</span></label>
-    <input type="email" placeholder="Enter Email Address" required>
+    <input type="email" name="email" placeholder="Enter Email Address" required>
 
     <label style="text-align:left;">Mobile Number <span style="color:red">*</span></label>
-    <input type="tel" placeholder="Enter Mobile Number" required>
+    <input type="text" name="mobile" placeholder="Enter Mobile Number" required>
 
     <label style="text-align:left;">City<span style="color:red">*</span></label>
-    <input type="tel" placeholder="Enter Mobile Number" required>
+    <input type="text" name="city" placeholder="Enter Mobile Number" required>
 
     <label style="text-align:left;">Role Applying For <span style="color:red">*</span></label>
-     <input type="email" placeholder="Enter Email Address" required>
-    <!-- <select required style="
-      width:100%;
-      padding:18px 14px;
-      border-radius:8px;
-      border:1px solid rgba(255,0,0,0.4);
-      background:rgba(255,255,255,0.08);
-      color:#fff;
-      font-size:16px;
-      outline:none;
-    ">
-      <option value="" disabled selected>Select Role</option>
-      <option value="role1">Role 1</option>
-      <option value="role2">Role 2</option>
-      <option value="role3">Role 3</option>
-    </select> -->
-
-    <!-- <label style="text-align:left;">Years of Experience <span style="color:red">*</span></label>
-    <input type="text" placeholder="Enter Years of Experience" required>
-
-    <label style="text-align:left;">Current / Previous Company <span style="color:red">*</span></label>
-    <input type="text" placeholder="Enter Company Name" required> -->
-
+     <input type="text" name="role" placeholder="role" required>
+  
+    
+    
     <label style="text-align:left;">Upload Resume <span style="color:red">*</span></label>
-    <input type="file" accept=".pdf,.doc,.docx" required>
+    <input type="text" name="resume" placeholder="Paste Google Drive resume link" required>
+    <!-- <input type="file" name="resume" accept=".pdf,.doc,.docx" required> -->
 
     <label style="text-align:left;">Message (optional)</label>
-    <textarea placeholder="Enter Message"></textarea>
+    <textarea placeholder="Enter Message" name="message"></textarea>
 
-    <button class="btn-primary">Submit Application</button>
+    <button class="btn-primary" type="submit">Submit Application</button>
 
   </form>
 
   <div class="apply-alt">
     <p>
     Mention job-title, city and your Name (in Messages) </p>
-
-  <!-- <p>Or email your resume to <strong> marketing@marksbiotech.com</strong><br></p> -->
     
   </div>
 </section>
 
 
-
+<!-- <p>Or email your resume to <strong> marketing@marksbiotech.com</strong><br></p> -->
 
 
 
@@ -376,8 +352,9 @@
       </div>
 
       <div class="about-subscribe-box">
-        <input type="email" placeholder="Enter your mail id" />
-        <button class="subsc">Subscribe</button>
+        <form action="" id="form1">
+        <input type="email" name="email" placeholder="Enter your mail id" />
+        <button class="subsc" type="submit">Subscribe</button></form>
       </div>
     </div>
 
