@@ -764,3 +764,28 @@ if (roomSliderSection) {
     startAuto();
   }
 }
+
+
+
+
+document.querySelectorAll('.nav-main-menu > li.has-mega > a').forEach(link => {
+  link.addEventListener('click', function (e) {
+
+    // tablet + mobile only
+    if (window.innerWidth <= 1024) {
+      e.preventDefault();
+
+      const parent = this.parentElement;
+
+      // close others (optional)
+      document.querySelectorAll('.nav-main-menu > li.has-mega').forEach(item => {
+        if (item !== parent) {
+          item.classList.remove('open');
+        }
+      });
+
+      // toggle current
+      parent.classList.toggle('open');
+    }
+  });
+});

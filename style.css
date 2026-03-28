@@ -1392,14 +1392,14 @@ a {
 }
 
 /* Highlights Mobile Refinements */
-@keyframes section8ZoomIn {
+/* @keyframes section8ZoomIn {
   from {
     transform: scale(1);
   }
   to {
     transform: scale(1.09);
   }
-}
+} */
 
 @media (max-width: 767px) {
   .hero-section {
@@ -1528,7 +1528,7 @@ a {
 
   .section6-container {
     width: 90%;
-    gap: 20px;
+    
   }
 
   .section6-image {
@@ -1538,16 +1538,16 @@ a {
   .section8 {
     height: 68vh;
     min-height: 320px;
-    max-height: 520px;
+    
     min-width: 100%;
-    margin-top: 50px;
+    
   }
 
   .section8-img {
     width: 100%;
     height: 100%;
     object-fit:cover;
-    object-position: center;
+    object-position: cover;
     animation: section8ZoomIn 12s ease-in-out infinite alternate;
   }
 }
@@ -1559,6 +1559,6 @@ a {
   }
 
   .section8-img {
-    animation-duration: 12s;
+    width: fit-content;
   }
 }
